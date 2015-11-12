@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/void_string"
+        android:text=""
         android:id="@+id/item_detail"
         android:layout_gravity="center_horizontal"/>
 </LinearLayout>

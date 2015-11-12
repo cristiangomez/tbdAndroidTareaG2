@@ -4,10 +4,29 @@
               android:layout_height="fill_parent"
               android:gravity="center_horizontal"
               android:orientation="vertical">
-    <TextView
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nombreText"
+        android:hint="@string/editNameHint"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/apellidoText"
+        android:hint="@string/editLastNameHint"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp" />
+
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/new_item"
-        android:id="@+id/new_item"
-        android:layout_gravity="center_horizontal"/>
+        android:text="@string/buttonIngresarActor"
+        android:id="@+id/newActorButton"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
