@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ip">http://192.168.42.37:8080/sakila-backend-master/</string>
+
+
+</resources>

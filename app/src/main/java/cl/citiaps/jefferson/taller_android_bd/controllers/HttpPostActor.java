@@ -12,6 +12,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
+import cl.citiaps.jefferson.taller_android_bd.R;
+
 /**
  * @author:
  */
@@ -19,10 +21,11 @@ import org.json.JSONObject;
 public class HttpPostActor extends AsyncTask<String,Integer,Boolean> {
 
     private Context context;
-    private final String URL_POST = "http://192.168.1.146:8080/sakila-backend-master/actors";
+    private String URL_POST;
 
     public HttpPostActor(Context c){
         context = c;
+        URL_POST = c.getString(R.string.ip)+"actors";
     }
 
     protected Boolean doInBackground(String... params) {
@@ -48,7 +51,7 @@ public class HttpPostActor extends AsyncTask<String,Integer,Boolean> {
             post.setEntity(entity);
 
             HttpResponse resp = httpClient.execute(post);
-
+            Log.e("POST", "Code"+resp.getStatusLine().getStatusCode());
         }
         catch(Exception ex)
         {

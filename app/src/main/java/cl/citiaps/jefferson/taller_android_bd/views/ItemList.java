@@ -26,7 +26,7 @@ import cl.citiaps.jefferson.taller_android_bd.utilities.SystemUtilities;
 public class ItemList extends ListFragment {
 
     private BroadcastReceiver br = null;
-    private final String URL_GET = "http://192.168.1.146:8080/sakila-backend-master/actors";
+    private String URL_GET;
     private String result;
 
     /**
@@ -41,6 +41,7 @@ public class ItemList extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        URL_GET = getString(R.string.ip)+"actors";
     }// onActivityCreated(Bundle savedInstanceState)
 
     /**
