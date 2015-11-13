@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.jar.JarEntry;
+
 import cl.citiaps.jefferson.taller_android_bd.R;
 import cl.citiaps.jefferson.taller_android_bd.controllers.HttpGet;
 import cl.citiaps.jefferson.taller_android_bd.utilities.JsonHandler;
@@ -25,6 +27,7 @@ public class ItemList extends ListFragment {
 
     private BroadcastReceiver br = null;
     private final String URL_GET = "http://192.168.1.146:8080/sakila-backend-master/actors";
+    private String result;
 
     /**
      * Constructor. Obligatorio para Fragmentos!
@@ -48,7 +51,11 @@ public class ItemList extends ListFragment {
         String item = l.getItemAtPosition(position).toString();
         Fragment itemDetail = new ItemDetail();
         Bundle arguments = new Bundle();
-        arguments.putString("item", item);
+        JsonHandler jh = new JsonHandler();
+        String[] r = jh.getActorsDetail(this.result, position);
+        arguments.putString("id", r[1]);
+        arguments.putString("nombre", r[0]);
+        arguments.putString("lu", r[2]);
         itemDetail.setArguments(arguments);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, itemDetail);
@@ -75,7 +82,8 @@ public class ItemList extends ListFragment {
         getActivity().registerReceiver(br, intentFilter);
         SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
         if (su.isNetworkAvailable()) {
-            new HttpGet(getActivity()).execute(URL_GET);
+            new HttpGet(getActivity(), this).execute(URL_GET);
+
         }
         super.onResume();
     }// onResume()
@@ -90,5 +98,9 @@ public class ItemList extends ListFragment {
         }
         super.onPause();
     }// onPause()
+
+    public void setString(String result){
+        this.result = result;
+    }
 
 }// ItemList extends ListFragment

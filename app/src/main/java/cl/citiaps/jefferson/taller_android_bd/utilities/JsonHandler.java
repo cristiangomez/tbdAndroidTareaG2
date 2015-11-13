@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class JsonHandler {
 
     /**
-     * Método que recibe un JSONArray en forma de String y devuelve un String[] con los actores
+     * Método que recibe un JSONArray en forma de String y devuelve un String[] con los actores s
      */
     public String[] getActors(String actors) {
         try {
@@ -25,6 +25,22 @@ public class JsonHandler {
                 actor = " " + row.getString("firstName") + " " + row.getString("lastName");
                 result[i] = actor;
             }
+            return result;
+        } catch (JSONException e) {
+            Log.e("ERROR", this.getClass().toString() + " " + e.toString());
+        }
+        return null;
+    }// getActors(String actors)
+
+    public String[] getActorsDetail(String actors, int pos) {
+        try {
+            JSONArray jad = new JSONArray(actors);
+            String[] result = new String[5];
+            JSONObject row = jad.getJSONObject(pos);
+            result[0] = row.getString("firstName")+ " "+ row.getString("lastName");
+            result[1] = row.getString("actorId");
+            result[2] = row.getString("lastUpdate");
+
             return result;
         } catch (JSONException e) {
             Log.e("ERROR", this.getClass().toString() + " " + e.toString());

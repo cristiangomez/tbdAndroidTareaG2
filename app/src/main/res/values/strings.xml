@@ -8,5 +8,11 @@
     <string name="test">Test</string>
     <string name="editLastNameHint">Apellido</string>
     <string name="editNameHint">Nombre</string>
+    <string name="getNombre">Nombre</string>
+    <string name="getId">id</string>
+    <string name="getDetail">Update</string>
+    <string name="getNombreLabel">Nombre :</string>
+    <string name="getIdLabel">Id :</string>
+    <string name="getDetailLabel">Last Update :</string>
     <string name="buttonIngresarActor">Ingresar Actor</string>
 </resources>

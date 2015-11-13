@@ -4,10 +4,73 @@
               android:layout_height="fill_parent"
               android:gravity="center_horizontal"
               android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/item_detail"
-        android:layout_gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getNombreLabel"
+            android:id="@+id/label_nombre"
+            android:layout_gravity="center_horizontal">
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getNombre"
+            android:id="@+id/text_nombre"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimaryDark" >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getIdLabel"
+            android:id="@+id/label_id"
+            android:layout_gravity="center_horizontal">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getId"
+            android:id="@+id/text_id" >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getDetailLabel"
+            android:id="@+id/label_LastUpdate"
+            android:layout_gravity="center_horizontal">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getDetail"
+            android:id="@+id/text_detail"
+            android:layout_gravity="center_horizontal" >
+        </TextView>
+    </LinearLayout>
+
 </LinearLayout>

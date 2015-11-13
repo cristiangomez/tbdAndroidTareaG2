@@ -43,9 +43,9 @@ public class NewItem extends Fragment {
                         nombre.getText().toString(),
                         apellido.getText().toString());
                 NewItem.this.getFragmentManager().popBackStackImmediate();
-            }
+    }
 
-        });
+});
         return view;
     }// onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 
