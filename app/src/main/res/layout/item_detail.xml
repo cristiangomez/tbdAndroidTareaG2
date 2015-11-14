@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:text="@string/getNombreLabel"
             android:id="@+id/label_nombre"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimaryDark">
 
         </TextView>
         <TextView
@@ -23,8 +24,7 @@
             android:layout_height="wrap_content"
             android:text="@string/getNombre"
             android:id="@+id/text_nombre"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorPrimaryDark" >
+            android:layout_gravity="center_horizontal" >
 
         </TextView>
 
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/getIdLabel"
             android:id="@+id/label_id"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_gravity="center_horizontal">
         </TextView>
 
@@ -60,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/getDetailLabel"
+            android:textColor="@color/colorPrimaryDark"
             android:id="@+id/label_LastUpdate"
             android:layout_gravity="center_horizontal">
         </TextView>

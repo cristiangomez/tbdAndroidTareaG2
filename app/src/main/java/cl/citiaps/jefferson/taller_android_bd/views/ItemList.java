@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.jar.JarEntry;
 
@@ -28,6 +29,8 @@ public class ItemList extends ListFragment {
     private BroadcastReceiver br = null;
     private String URL_GET;
     private String result;
+    private BroadcastReceiver br2;
+    private BroadcastReceiver failed;
 
     /**
      * Constructor. Obligatorio para Fragmentos!
@@ -54,6 +57,7 @@ public class ItemList extends ListFragment {
         Bundle arguments = new Bundle();
         JsonHandler jh = new JsonHandler();
         String[] r = jh.getActorsDetail(this.result, position);
+
         arguments.putString("id", r[1]);
         arguments.putString("nombre", r[0]);
         arguments.putString("lu", r[2]);
@@ -70,6 +74,7 @@ public class ItemList extends ListFragment {
     @Override
     public void onResume() {
         IntentFilter intentFilter = new IntentFilter("httpData");
+        IntentFilter intentFilterFailed = new IntentFilter("failed");
         br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -80,7 +85,27 @@ public class ItemList extends ListFragment {
                 setListAdapter(adapter);
             }
         };
+        failed = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Toast.makeText(context, "Error de conexion revise su conexión a internet.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Recuerde colocar la ip correcta en res/values/ip.xml.", Toast.LENGTH_SHORT).show();
+
+                try {
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.remove(ItemList.this);
+                    transaction.replace(R.id.fragment_container, new ReloadItemList());
+                    transaction.commit();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+
+            }
+        };
         getActivity().registerReceiver(br, intentFilter);
+        getActivity().registerReceiver(failed, intentFilterFailed);
+
         SystemUtilities su = new SystemUtilities(getActivity().getApplicationContext());
         if (su.isNetworkAvailable()) {
             new HttpGet(getActivity(), this).execute(URL_GET);
@@ -96,6 +121,9 @@ public class ItemList extends ListFragment {
     public void onPause() {
         if (br != null) {
             getActivity().unregisterReceiver(br);
+        }
+        if( failed != null){
+            getActivity().unregisterReceiver(failed);
         }
         super.onPause();
     }// onPause()

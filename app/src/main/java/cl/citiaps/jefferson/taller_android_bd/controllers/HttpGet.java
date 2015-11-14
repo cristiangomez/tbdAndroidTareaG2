@@ -68,8 +68,9 @@ public class HttpGet extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if(result==null){
-            Toast.makeText(context, "Revise su conexión a internet. 4g", Toast.LENGTH_LONG).show();
-            ((Activity)context).finish();
+            Intent intent = new Intent("failed").putExtra("data", result);
+            Log.e("ERROR", "Conexion fallida, recuerde colocar la ip correcta en res/values/ip.xml");
+            context.sendBroadcast(intent);
         }
         else{
             Intent intent = new Intent("httpData").putExtra("data", result);

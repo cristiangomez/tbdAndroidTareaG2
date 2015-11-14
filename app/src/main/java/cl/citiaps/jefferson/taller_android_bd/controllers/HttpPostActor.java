@@ -1,6 +1,7 @@
 package cl.citiaps.jefferson.taller_android_bd.controllers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -67,6 +68,8 @@ public class HttpPostActor extends AsyncTask<String,Integer,Boolean> {
 
         if (result){
             Toast.makeText(context, "Se ha agregado Correctamente", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent("httpPost").putExtra("data", result);
+            context.sendBroadcast(intent);
         }
         else{
             Toast.makeText(context, "No se ha podido agregar el Actor, compruebe su coneción", Toast.LENGTH_SHORT).show();
