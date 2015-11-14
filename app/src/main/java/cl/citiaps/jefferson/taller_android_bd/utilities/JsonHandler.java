@@ -23,7 +23,7 @@ public class JsonHandler {
             for (int i = 0; i < ja.length(); i++) {
                 JSONObject row = ja.getJSONObject(i);
                 actor = " " + row.getString("firstName") + " " + row.getString("lastName");
-                result[i] = actor;
+                result[ja.length()-i-1] = actor;
             }
             return result;
         } catch (JSONException e) {

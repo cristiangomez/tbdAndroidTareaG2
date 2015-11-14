@@ -56,7 +56,7 @@ public class ItemList extends ListFragment {
         Fragment itemDetail = new ItemDetail();
         Bundle arguments = new Bundle();
         JsonHandler jh = new JsonHandler();
-        String[] r = jh.getActorsDetail(this.result, position);
+        String[] r = jh.getActorsDetail(this.result, getListAdapter().getCount()-position-1);
 
         arguments.putString("id", r[1]);
         arguments.putString("nombre", r[0]);
